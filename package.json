@@ -5,10 +5,17 @@
   "type": "module",
   "main": "dist/say.css",
   "style": "dist/say.css",
+  "exports": {
+    ".": "./dist/say.css",
+    "./container-variants.css": "./src/container-variants.css",
+    "./jit.css": "./src/jit.css"
+  },
+  "types": "./types/index.d.ts",
   "files": [
     "dist",
     "src",
-    "scripts"
+    "scripts",
+    "types"
   ],
   "scripts": {
     "build": "node scripts/build.mjs",

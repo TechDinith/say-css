@@ -13112,8 +13112,14 @@
  }
 
 /* JIT arbitrary-value utilities (generated) */
-@layer say.utilities { /* Say CSS — generated JIT (arbitrary values). Regenerate: node scripts/jit.mjs */
-/* placeholder — populated by node scripts/jit.mjs in your project */
+@layer say.utilities { /* Say CSS - generated JIT (arbitrary values). Regenerate: node scripts/jit.mjs */
+.p-\[13px\] { padding:13px; }
+.w-\[320px\] { width:320px; }
+.bg-\[\#fef3c7\] { background-color:#fef3c7; }
+.rounded-\[10px\] { border-radius:10px; }
+.border-\[\#f59e0b\] { border-color:#f59e0b; }
+.text-\[14px\] { font-size:14px; }
+.text-\[\#92400e\] { color:#92400e; }
  }
 
 /* Backward-compat fallbacks (removable later) live in compat.css */
