@@ -1,2 +1,17 @@
-# Placeholder — Say CSS source entry point.
-# Real content lands in Step 2 (architecture + tokens).
+/*
+ * Say CSS — Core architecture
+ * Layer order: later layers win without !important
+ */
+@layer say.reset, say.tokens, say.base, say.utilities, say.components, say.variants;
+
+@import "./reset.css" layer(say.reset);
+@import "./tokens.css" layer(say.tokens);
+@import "./base.css" layer(say.base);
+
+/* Utility classes are appended here in later steps. */
+@layer say.utilities {
+  /* placeholder — populated in Steps 3-8 */
+}
+
+/* Backward-compat fallbacks (removable later) live in compat.css */
+@import "./compat.css" layer(say.compat);

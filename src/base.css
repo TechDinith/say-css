@@ -1,0 +1,47 @@
+@layer say.base {
+  html {
+    font-family: var(--say-font-sans);
+    font-size: 100%;
+    line-height: var(--say-leading-normal);
+    color: var(--say-color-text);
+    background-color: var(--say-color-bg);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    min-height: 100vh;
+  }
+
+  ::selection {
+    background-color: var(--say-color-primary-200);
+    color: var(--say-color-primary-900);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--say-color-ring);
+    outline-offset: 2px;
+    border-radius: var(--say-radius-sm);
+  }
+
+  a {
+    color: var(--say-color-primary-600);
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  code,
+  pre,
+  kbd,
+  samp {
+    font-family: var(--say-font-mono);
+  }
+
+  hr {
+    border: 0;
+    border-top: 1px solid var(--say-color-border);
+  }
+}
