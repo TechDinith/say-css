@@ -3,7 +3,7 @@
 Utility-first CSS library for modern web apps (React, Next, Vite, Vue, Svelte, plain HTML).
 
 - **Zero config:** drop in one file or `import "@say-css/core"` — works immediately.
-- **Modern CSS:** cascade layers, OKLCH colors, nesting, `:has()`, container queries.
+- **Modern CSS:** cascade layers, OKLCH colors (full Tailwind-like palette), gradients, nesting, `:has()`, container queries.
 - **Customizable:** override `--say-*` CSS variables anywhere (even inline).
 - **Dark mode built in:** follows system + manual toggle.
 - **Backward compatible:** small fallback layer you can delete when ready.
