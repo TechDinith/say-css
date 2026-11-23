@@ -20,6 +20,8 @@ function esc(s) {
 }
 
 const rules = [];
+const bps = [["sm", 640], ["md", 768], ["lg", 1024], ["xl", 1280], ["2xl", 1536]];
+
 function base(name, decls, opts = {}) {
   if (MODE === "container") {
     const cbps = [["sm", 320], ["md", 480], ["lg", 640], ["xl", 800], ["2xl", 960]];
@@ -28,6 +30,7 @@ function base(name, decls, opts = {}) {
     }
     return;
   }
+  const e = esc(name);
   rules.push(`.${e} { ${decls} }`);
   if (opts.responsive !== false) {
     for (const [bp, px] of bps) {
@@ -53,11 +56,7 @@ function spv(k) { return `var(--say-space-${k.replace(".", "-")})`; }
 // token names use 0-5 etc with hyphen for dot: 0.5 -> 0-5? Our tokens use 0-5. Yes.
 function spaceToken(k) { return `var(--say-space-${k.replace(".", "-")})`; }
 
-const colors = {
-  neutral: [50,100,200,300,400,500,600,700,800,900,950],
-  primary: [50,100,200,300,400,500,600,700,800,900,950],
-};
-const semanticColors = ["success","warning","danger","info"];
+import { hues, shades } from "./colors.mjs";
 
 // ---------- Display ----------
 for (const [n,d] of [["block","block"],["inline-block","inline-block"],["inline","inline"],["flex","flex"],["inline-flex","inline-flex"],["grid","grid"],["inline-grid","inline-grid"],["hidden","none"],["contents","contents"],["table","table"],["table-row","table-row"],["table-cell","table-cell"],["flow-root","flow-root"]]) base(n, `display:${d};`);
@@ -294,12 +293,12 @@ base("not-italic", "font-style:normal;");
 // ---------- Colors ----------
 function colorDecl(prop, val) { return `${prop}:${val};`; }
 // text color
-for (const [group, shades] of Object.entries(colors)) {
+for (const hue of hues) {
   for (const sh of shades) {
-    base(`text-${group}-${sh}`, `color:var(--say-color-${group}-${sh});`, { hover: true, focus: true, dark: true });
+    base(`text-${hue}-${sh}`, `color:var(--say-color-${hue}-${sh});`, { hover: true, focus: true, dark: true });
   }
 }
-for (const c of semanticColors) {
+for (const c of ["success","warning","danger","info"]) {
   base(`text-${c}`, `color:var(--say-color-${c});`, { hover: true, focus: true, dark: true });
 }
 base("text-inherit", "color:inherit;");
@@ -307,12 +306,12 @@ base("text-current", "color:currentColor;");
 base("text-transparent", "color:transparent;");
 
 // bg color
-for (const [group, shades] of Object.entries(colors)) {
+for (const hue of hues) {
   for (const sh of shades) {
-    base(`bg-${group}-${sh}`, `background-color:var(--say-color-${group}-${sh});`, { hover: true, focus: true, dark: true });
+    base(`bg-${hue}-${sh}`, `background-color:var(--say-color-${hue}-${sh});`, { hover: true, focus: true, dark: true });
   }
 }
-for (const c of semanticColors) {
+for (const c of ["success","warning","danger","info"]) {
   base(`bg-${c}`, `background-color:var(--say-color-${c});`, { hover: true, focus: true, dark: true });
 }
 base("bg-inherit", "background-color:inherit;");
@@ -320,12 +319,12 @@ base("bg-current", "background-color:currentColor;");
 base("bg-transparent", "background-color:transparent;");
 
 // border color
-for (const [group, shades] of Object.entries(colors)) {
+for (const hue of hues) {
   for (const sh of shades) {
-    base(`border-${group}-${sh}`, `border-color:var(--say-color-${group}-${sh});`, { hover: true, focus: true, dark: true });
+    base(`border-${hue}-${sh}`, `border-color:var(--say-color-${hue}-${sh});`, { hover: true, focus: true, dark: true });
   }
 }
-for (const c of semanticColors) {
+for (const c of ["success","warning","danger","info"]) {
   base(`border-${c}`, `border-color:var(--say-color-${c});`, { hover: true, focus: true, dark: true });
 }
 base("border-inherit", "border-color:inherit;");
@@ -362,6 +361,23 @@ base("divide-y", "& > * + * { border-top-width:1px; }");
 base("divide-x", "& > * + * { border-left-width:1px; }");
 base("divide-y-0", "& > * + * { border-top-width:0; }");
 base("divide-x-0", "& > * + * { border-left-width:0; }");
+
+// ---------- Gradients ----------
+const gradDirs = { t: "to top", tr: "to top right", r: "to right", br: "to bottom right", b: "to bottom", bl: "to bottom left", l: "to left", tl: "to top left" };
+for (const [d, v] of Object.entries(gradDirs)) {
+  base(`bg-gradient-to-${d}`, `background-image: linear-gradient(${v}, var(--say-g-from, transparent), var(--say-g-to, transparent));`);
+}
+for (const hue of hues) {
+  for (const sh of shades) {
+    base(`from-${hue}-${sh}`, `--say-g-from: var(--say-color-${hue}-${sh});`);
+    base(`to-${hue}-${sh}`, `--say-g-to: var(--say-color-${hue}-${sh});`);
+  }
+}
+for (const c of ["success","warning","danger","info","primary"]) {
+  base(`from-${c}`, `--say-g-from: var(--say-color-${c});`);
+  base(`to-${c}`, `--say-g-to: var(--say-color-${c});`);
+}
+base("bg-clip-text", "-webkit-background-clip: text; background-clip: text; color: transparent;");
 
 // ---------- Effects ----------
 base("shadow-sm", "box-shadow:var(--say-shadow-sm);");
@@ -519,6 +535,11 @@ base("ring-2", "box-shadow:0 0 0 2px var(--say-color-ring);");
 base("ring-4", "box-shadow:0 0 0 4px var(--say-color-ring);");
 base("ring-8", "box-shadow:0 0 0 8px var(--say-color-ring);");
 base("ring-inset", "box-shadow:inset 0 0 0 1px var(--say-color-ring);");
+for (const hue of hues) {
+  for (const sh of shades) {
+    base(`ring-${hue}-${sh}`, `--say-color-ring: var(--say-color-${hue}-${sh});`);
+  }
+}
 base("ring-offset-0", "--say-tw-ring-offset-width:0px;");
 base("ring-offset-1", "--say-tw-ring-offset-width:1px;");
 base("ring-offset-2", "--say-tw-ring-offset-width:2px;");

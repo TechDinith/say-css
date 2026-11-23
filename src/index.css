@@ -5,6 +5,7 @@
 @layer say.reset, say.tokens, say.base, say.utilities, say.components, say.variants, say.compat;
 
 @import "./reset.css" layer(say.reset);
+@import "./colors.css" layer(say.tokens);
 @import "./tokens.css" layer(say.tokens);
 @import "./base.css" layer(say.base);
 

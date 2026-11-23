@@ -1,36 +1,5 @@
+@layer say.tokens {
   :root {
-    /* ---------- Color: neutral scale ---------- */
-    --say-color-neutral-50: oklch(0.985 0.002 260);
-    --say-color-neutral-100: oklch(0.965 0.003 260);
-    --say-color-neutral-200: oklch(0.92 0.005 260);
-    --say-color-neutral-300: oklch(0.86 0.007 260);
-    --say-color-neutral-400: oklch(0.7 0.01 260);
-    --say-color-neutral-500: oklch(0.55 0.012 260);
-    --say-color-neutral-600: oklch(0.45 0.014 260);
-    --say-color-neutral-700: oklch(0.37 0.016 260);
-    --say-color-neutral-800: oklch(0.28 0.018 260);
-    --say-color-neutral-900: oklch(0.2 0.02 260);
-    --say-color-neutral-950: oklch(0.13 0.02 260);
-
-    /* ---------- Color: primary scale ---------- */
-    --say-color-primary-50: oklch(0.97 0.03 260);
-    --say-color-primary-100: oklch(0.94 0.06 260);
-    --say-color-primary-200: oklch(0.88 0.1 260);
-    --say-color-primary-300: oklch(0.8 0.14 260);
-    --say-color-primary-400: oklch(0.7 0.18 260);
-    --say-color-primary-500: oklch(0.58 0.22 260);
-    --say-color-primary-600: oklch(0.5 0.22 260);
-    --say-color-primary-700: oklch(0.43 0.2 260);
-    --say-color-primary-800: oklch(0.36 0.18 260);
-    --say-color-primary-900: oklch(0.3 0.15 260);
-    --say-color-primary-950: oklch(0.22 0.12 260);
-
-    /* ---------- Color: semantic ---------- */
-    --say-color-success: oklch(0.62 0.17 145);
-    --say-color-warning: oklch(0.78 0.16 75);
-    --say-color-danger: oklch(0.6 0.2 25);
-    --say-color-info: oklch(0.6 0.18 230);
-
     /* ---------- Semantic text/bg/border (light) ---------- */
     --say-color-text: var(--say-color-neutral-900);
     --say-color-text-muted: var(--say-color-neutral-500);
@@ -41,8 +10,6 @@
     --say-color-border: var(--say-color-neutral-200);
     --say-color-border-strong: var(--say-color-neutral-300);
     --say-color-ring: var(--say-color-primary-500);
-
-    /* ---------- Accent (default = primary) ---------- */
     --say-color-accent: var(--say-color-primary-500);
 
     /* ---------- Spacing scale (0.25rem steps, Tailwind-compatible) ---------- */
@@ -166,46 +133,19 @@
     --say-ease-in: cubic-bezier(0.4, 0, 1, 1);
     --say-ease-out: cubic-bezier(0, 0, 0.2, 1);
     --say-ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
-
-    /* ---------- Breakpoints (reference only; media queries use literals) ---------- */
-    /* sm 640px | md 768px | lg 1024px | xl 1280px | 2xl 1536px */
   }
 
   /* ---------- Dark mode: system preference ---------- */
   @media (prefers-color-scheme: dark) {
     :root:not(.light):not([data-theme="light"]) {
-      --say-color-neutral-50: oklch(0.13 0.02 260);
-      --say-color-neutral-100: oklch(0.17 0.02 260);
-      --say-color-neutral-200: oklch(0.24 0.02 260);
-      --say-color-neutral-300: oklch(0.32 0.02 260);
-      --say-color-neutral-400: oklch(0.48 0.015 260);
-      --say-color-neutral-500: oklch(0.62 0.012 260);
-      --say-color-neutral-600: oklch(0.72 0.01 260);
-      --say-color-neutral-700: oklch(0.8 0.008 260);
-      --say-color-neutral-800: oklch(0.88 0.006 260);
-      --say-color-neutral-900: oklch(0.95 0.004 260);
-      --say-color-neutral-950: oklch(0.985 0.002 260);
-
-      --say-color-primary-50: oklch(0.22 0.12 260);
-      --say-color-primary-100: oklch(0.28 0.14 260);
-      --say-color-primary-200: oklch(0.34 0.16 260);
-      --say-color-primary-300: oklch(0.42 0.18 260);
-      --say-color-primary-400: oklch(0.5 0.2 260);
-      --say-color-primary-500: oklch(0.62 0.2 260);
-      --say-color-primary-600: oklch(0.7 0.18 260);
-      --say-color-primary-700: oklch(0.78 0.15 260);
-      --say-color-primary-800: oklch(0.85 0.12 260);
-      --say-color-primary-900: oklch(0.91 0.08 260);
-      --say-color-primary-950: oklch(0.96 0.04 260);
-
-      --say-color-text: var(--say-color-neutral-900);
-      --say-color-text-muted: var(--say-color-neutral-500);
-      --say-color-text-subtle: var(--say-color-neutral-400);
-      --say-color-bg: var(--say-color-neutral-50);
-      --say-color-bg-subtle: var(--say-color-neutral-100);
-      --say-color-bg-muted: var(--say-color-neutral-200);
-      --say-color-border: var(--say-color-neutral-200);
-      --say-color-border-strong: var(--say-color-neutral-300);
+      --say-color-text: var(--say-color-neutral-100);
+      --say-color-text-muted: var(--say-color-neutral-400);
+      --say-color-text-subtle: var(--say-color-neutral-500);
+      --say-color-bg: var(--say-color-neutral-950);
+      --say-color-bg-subtle: var(--say-color-neutral-900);
+      --say-color-bg-muted: var(--say-color-neutral-800);
+      --say-color-border: var(--say-color-neutral-800);
+      --say-color-border-strong: var(--say-color-neutral-700);
     }
   }
 
@@ -213,43 +153,13 @@
   :root.dark,
   .dark,
   [data-theme="dark"] {
-    --say-color-neutral-50: oklch(0.13 0.02 260);
-    --say-color-neutral-100: oklch(0.17 0.02 260);
-    --say-color-neutral-200: oklch(0.24 0.02 260);
-    --say-color-neutral-300: oklch(0.32 0.02 260);
-    --say-color-neutral-400: oklch(0.48 0.015 260);
-    --say-color-neutral-500: oklch(0.62 0.012 260);
-    --say-color-neutral-600: oklch(0.72 0.01 260);
-    --say-color-neutral-700: oklch(0.8 0.008 260);
-    --say-color-neutral-800: oklch(0.88 0.006 260);
-    --say-color-neutral-900: oklch(0.95 0.004 260);
-    --say-color-neutral-950: oklch(0.985 0.002 260);
-
-    --say-color-primary-50: oklch(0.22 0.12 260);
-    --say-color-primary-100: oklch(0.28 0.14 260);
-    --say-color-primary-200: oklch(0.34 0.16 260);
-    --say-color-primary-300: oklch(0.42 0.18 260);
-    --say-color-primary-400: oklch(0.5 0.2 260);
-    --say-color-primary-500: oklch(0.62 0.2 260);
-    --say-color-primary-600: oklch(0.7 0.18 260);
-    --say-color-primary-700: oklch(0.78 0.15 260);
-    --say-color-primary-800: oklch(0.85 0.12 260);
-    --say-color-primary-900: oklch(0.91 0.08 260);
-    --say-color-primary-950: oklch(0.96 0.04 260);
-
-    --say-color-text: var(--say-color-neutral-900);
-    --say-color-text-muted: var(--say-color-neutral-500);
-    --say-color-text-subtle: var(--say-color-neutral-400);
-    --say-color-bg: var(--say-color-neutral-50);
-    --say-color-bg-subtle: var(--say-color-neutral-100);
-    --say-color-bg-muted: var(--say-color-neutral-200);
-    --say-color-border: var(--say-color-neutral-200);
-    --say-color-border-strong: var(--say-color-neutral-300);
+    --say-color-text: var(--say-color-neutral-100);
+    --say-color-text-muted: var(--say-color-neutral-400);
+    --say-color-text-subtle: var(--say-color-neutral-500);
+    --say-color-bg: var(--say-color-neutral-950);
+    --say-color-bg-subtle: var(--say-color-neutral-900);
+    --say-color-bg-muted: var(--say-color-neutral-800);
+    --say-color-border: var(--say-color-neutral-800);
+    --say-color-border-strong: var(--say-color-neutral-700);
   }
-
-  /* ---------- Light mode: manual override ---------- */
-  :root.light,
-  .light,
-  [data-theme="light"] {
-    /* resets to light defaults by re-declaring (already default on :root) */
-  }
+}
