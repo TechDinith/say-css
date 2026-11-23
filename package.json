@@ -5,18 +5,32 @@
   "type": "module",
   "main": "dist/say.css",
   "style": "dist/say.css",
-  "files": ["dist", "src", "scripts"],
+  "files": [
+    "dist",
+    "src",
+    "scripts"
+  ],
   "scripts": {
     "build": "node scripts/build.mjs",
     "gen:utilities": "node scripts/gen-utilities.mjs",
     "dev": "node scripts/build.mjs",
     "lint": "echo \"lint not yet implemented\""
   },
-  "keywords": ["css", "utility", "utility-first", "tailwind-alternative", "say-css", "modern-css"],
+  "keywords": [
+    "css",
+    "utility",
+    "utility-first",
+    "tailwind-alternative",
+    "say-css",
+    "modern-css"
+  ],
   "author": "",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/say-css/say-css"
+  },
+  "devDependencies": {
+    "postcss": "^8.5.33"
   }
 }
