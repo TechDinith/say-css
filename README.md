@@ -11,17 +11,27 @@ Utility-first CSS library for modern web apps (React, Next, Vite, Vue, Svelte, p
 
 ## Install
 
-Drop-in (no build step):
-```html
-<link rel="stylesheet" href="say.min.css" />
-```
-
-npm:
+**Vite (zero-config):**
 ```bash
 npm install @say-css/core
 ```
 ```js
-import "@say-css/core"; // loads dist/say.css
+// vite.config.js
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+import sayCss from "@say-css/core/vite";
+export default defineConfig({ plugins: [react(), sayCss()] });
+```
+That's it — base CSS + JIT arbitrary values are injected automatically. No imports needed.
+
+**Drop-in (no build step):**
+```html
+<link rel="stylesheet" href="say.min.css" />
+```
+
+**Other frameworks (Next, CRA, Vue CLI):**
+```js
+import "@say-css/core";
 ```
 
 ## Usage

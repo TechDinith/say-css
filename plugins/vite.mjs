@@ -54,10 +54,12 @@ export default function sayCss(options = {}) {
       if (id === RESOLVED_ID) return css;
     },
     transformIndexHtml(html) {
-      return html.replace(
-        "</head>",
-        `<script type="module">import "${VIRTUAL_ID}";</script></head>`
-      );
+      // Auto-inject base CSS + JIT (no manual import needed)
+      const inject = `<script type="module">
+import "@say-css/core";
+import "${VIRTUAL_ID}";
+</script>`;
+      return html.replace("</head>", inject + "</head>");
     },
   };
 }
