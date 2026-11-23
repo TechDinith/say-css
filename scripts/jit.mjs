@@ -1,15 +1,16 @@
 // scripts/jit.mjs
-// Generates src/jit.css from arbitrary-value utility classes found in source files.
+// Generates JIT CSS from arbitrary-value utility classes found in source files.
 // Usage: node scripts/jit.mjs [dir]
+// Also imported by plugins/vite.mjs
+
 import { readdirSync, readFileSync, writeFileSync, statSync } from "node:fs";
 import { join, extname, resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
-const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
-const SCAN_EXT = new Set([".html", ".htm", ".jsx", ".tsx", ".vue", ".svelte", ".js", ".ts", ".astro", ".mdx"]);
-const IGNORE = new Set(["node_modules", "dist", ".git", "types"]);
+export const SCAN_EXT = new Set([".html", ".htm", ".jsx", ".tsx", ".vue", ".svelte", ".js", ".ts", ".astro", ".mdx"]);
+export const IGNORE = new Set(["node_modules", "dist", ".git", "types"]);
 
-function walk(dir, out = []) {
+export function walk(dir, out = []) {
   for (const name of readdirSync(dir)) {
     if (IGNORE.has(name)) continue;
     const p = join(dir, name);
@@ -20,7 +21,7 @@ function walk(dir, out = []) {
   return out;
 }
 
-function extractClasses(text) {
+export function extractClasses(text) {
   const found = new Set();
   const re = /(?:class|className)\s*=\s*(?:"([^"]*)"|'([^']*)'|{`([^`]*)`})/g;
   let m;
@@ -29,6 +30,16 @@ function extractClasses(text) {
     for (const tok of val.split(/\s+/)) if (tok) found.add(tok);
   }
   return found;
+}
+
+export function scanClasses(dir) {
+  const files = walk(dir);
+  const all = new Set();
+  for (const f of files) {
+    try { for (const c of extractClasses(readFileSync(f, "utf8"))) all.add(c); }
+    catch {}
+  }
+  return all;
 }
 
 function splitVariants(token) {
@@ -74,28 +85,24 @@ const handlers = {
   right: v => `right:${v};`,
   bottom: v => `bottom:${v};`,
   left: v => `left:${v};`,
-  "basis": v => `flex-basis:${v};`,
-  "z": v => `z-index:${v};`,
-  "rounded": v => `border-radius:${v};`,
-  "opacity": v => `opacity:${v};`,
-  "leading": v => `line-height:${v};`,
-  "tracking": v => `letter-spacing:${v};`,
-  "aspect": v => `aspect-ratio:${v};`,
-  "blur": v => `filter:blur(${v});`,
+  basis: v => `flex-basis:${v};`,
+  z: v => `z-index:${v};`,
+  rounded: v => `border-radius:${v};`,
+  opacity: v => `opacity:${v};`,
+  leading: v => `line-height:${v};`,
+  tracking: v => `letter-spacing:${v};`,
+  aspect: v => `aspect-ratio:${v};`,
+  blur: v => `filter:blur(${v});`,
   "backdrop-blur": v => `backdrop-filter:blur(${v});`,
-  "cursor": v => `cursor:${v};`,
-  "duration": v => `transition-duration:${v};`,
-  "delay": v => `transition-delay:${v};`,
-  "order": v => `order:${v};`,
-  "grow": v => `flex-grow:${v};`,
-  "shrink": v => `flex-shrink:${v};`,
-  "text": v => (isColor(v) ? `color:${v};` : `font-size:${v};`),
-  "bg": v => (isColor(v) ? `background-color:${v};` : (v.startsWith("url") ? `background-image:${v};` : `background:${v};`)),
-  "border": v => (isColor(v) ? `border-color:${v};` : `border-width:${v};`),
-  "rounded-tl": v => `border-top-left-radius:${v};`,
-  "rounded-tr": v => `border-top-right-radius:${v};`,
-  "rounded-br": v => `border-bottom-right-radius:${v};`,
-  "rounded-bl": v => `border-bottom-left-radius:${v};`,
+  cursor: v => `cursor:${v};`,
+  duration: v => `transition-duration:${v};`,
+  delay: v => `transition-delay:${v};`,
+  order: v => `order:${v};`,
+  grow: v => `flex-grow:${v};`,
+  shrink: v => `flex-shrink:${v};`,
+  text: v => (isColor(v) ? `color:${v};` : `font-size:${v};`),
+  bg: v => (isColor(v) ? `background-color:${v};` : (v.startsWith("url") ? `background-image:${v};` : `background:${v};`)),
+  border: v => (isColor(v) ? `border-color:${v};` : `border-width:${v};`),
 };
 
 function esc(s) {
@@ -138,22 +145,29 @@ function emit(token) {
   return rule;
 }
 
-const scanDir = resolve(process.argv[2] || ".");
-const files = walk(scanDir);
-const allClasses = new Set();
-for (const f of files) {
-  try { for (const c of extractClasses(readFileSync(f, "utf8"))) allClasses.add(c); }
-  catch {}
+export function generateCss(classes) {
+  const rules = [];
+  const seen = new Set();
+  for (const cls of classes) {
+    const r = emit(cls);
+    if (r && !seen.has(cls)) { seen.add(cls); rules.push(r); }
+  }
+  const header = "/* Say CSS - generated JIT (arbitrary values). */\n";
+  return header + rules.join("\n") + "\n";
 }
 
-const rules = [];
-const seen = new Set();
-for (const cls of allClasses) {
-  const r = emit(cls);
-  if (r && !seen.has(cls)) { seen.add(cls); rules.push(r); }
+export function run(dir, outFile) {
+  const classes = scanClasses(dir);
+  const css = generateCss(classes);
+  if (outFile) writeFileSync(outFile, css);
+  return css;
 }
 
-const header = "/* Say CSS - generated JIT (arbitrary values). Regenerate: node scripts/jit.mjs */\n";
-const css = header + rules.join("\n") + "\n";
-writeFileSync(join(ROOT, "src", "jit.css"), css);
-console.log(`Scanned ${files.length} files, found ${allClasses.size} classes, generated ${rules.length} JIT rules -> src/jit.css`);
+// CLI
+const isMain = process.argv[1] && fileURLToPath(import.meta.url) === resolve(process.argv[1]);
+if (isMain) {
+  const scanDir = resolve(process.argv[2] || ".");
+  const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
+  const css = run(scanDir, join(ROOT, "src", "jit.css"));
+  console.log(`Generated JIT css for ${scanDir}`);
+}

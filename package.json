@@ -8,13 +8,15 @@
   "exports": {
     ".": "./dist/say.css",
     "./container-variants.css": "./src/container-variants.css",
-    "./jit.css": "./src/jit.css"
+    "./jit.css": "./src/jit.css",
+    "./vite": "./plugins/vite.mjs"
   },
   "types": "./types/index.d.ts",
   "files": [
     "dist",
     "src",
     "scripts",
+    "plugins",
     "types"
   ],
   "scripts": {
@@ -30,7 +32,9 @@
     "utility-first",
     "tailwind-alternative",
     "say-css",
-    "modern-css"
+    "modern-css",
+    "vite",
+    "plugin"
   ],
   "author": "",
   "license": "MIT",

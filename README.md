@@ -88,7 +88,37 @@ import "@say-css/core/container-variants.css";
 
 A VS Code extension scaffold lives in `extensions/vscode/`. Compile with `npm run compile` (in that folder) after installing deps. TS types (`SayClass`) are in `types/`.
 
-## Backward compat
+## Vite plugin (auto JIT)
+
+Install and add to `vite.config.js`:
+```js
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+import sayCss from "@say-css/core/vite";
+export default defineConfig({ plugins: [react(), sayCss()] });
+```
+Arbitrary values are now generated automatically during dev and build — no manual JIT step.
+
+## Modern recipes (copy-paste)
+
+```html
+<!-- Primary button -->
+<button class="px-5 py-2.5 bg-primary-500 text-white font-medium rounded-lg shadow-md hover:bg-primary-600 hover:shadow-lg focus:ring-2 focus:ring-primary-300 transition-all">
+  Get started
+</button>
+
+<!-- Glass card -->
+<div class="p-6 rounded-2xl bg-white/70 backdrop-blur-lg border border-white/20 shadow-xl">
+  <h3 class="text-xl font-semibold text-neutral-900">Glass card</h3>
+  <p class="text-neutral-600 mt-2">Modern frosted look.</p>
+</div>
+
+<!-- Gradient hero -->
+<section class="py-20 px-6 text-center bg-gradient-to-br from-primary-500 to-primary-700 text-white rounded-3xl">
+  <h1 class="text-5xl font-extrabold tracking-tight">Build faster</h1>
+  <p class="mt-4 text-primary-100 text-lg">Utility-first, modern, zero-config.</p>
+</section>
+```
 
 `src/compat.css` contains fallbacks for older browsers. Delete the import in `src/index.css` once you no longer need them.
 
