@@ -11,13 +11,13 @@ step not marked DONE.
 - BLOCKED: needs decision
 
 ## Current step
-Step 1 — Scaffold (IN_PROGRESS)
+Step 2 — Core architecture (TODO, awaiting go-ahead)
 
 ## Phase 1 steps
 
 | # | Step | Status |
 |---|------|--------|
-| 1 | Scaffold repo structure, package.json, LICENSE, README, progress | IN_PROGRESS |
+| 1 | Scaffold repo structure, package.json, LICENSE, README, progress | DONE |
 | 2 | Core architecture: @layer order, tokens (CSS vars), base reset | TODO |
 | 3 | Layout utilities (display, flex, grid, position, sizing, overflow) | TODO |
 | 4 | Spacing utilities (margin, padding, gap) + responsive prefixes | TODO |
