@@ -11,7 +11,7 @@ step not marked DONE.
 - BLOCKED: needs decision
 
 ## Current step
-Phase 1 review — awaiting user feedback
+Phase 1 complete — ready for user review / push
 
 ## Phase 1 steps
 
