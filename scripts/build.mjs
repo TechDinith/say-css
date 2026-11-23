@@ -9,6 +9,14 @@ const ROOT = join(__dir, "..");
 const SRC = join(ROOT, "src");
 const DIST = join(ROOT, "dist");
 
+let lcTransform = null;
+try {
+  const lc = await import("lightningcss");
+  lcTransform = lc.transform;
+} catch (e) {
+  lcTransform = null;
+}
+
 function inlineImports(filePath, seen = new Set()) {
   const abs = resolve(filePath);
   if (seen.has(abs)) return "";
@@ -31,8 +39,16 @@ function inlineImports(filePath, seen = new Set()) {
 mkdirSync(DIST, { recursive: true });
 const full = inlineImports(join(SRC, "index.css"));
 
-// basic minify: strip comments and collapse whitespace
+// minify with LightningCSS if available, else basic
 function minify(css) {
+  if (lcTransform) {
+    try {
+      const res = lcTransform({ code: Buffer.from(css), minify: true, sourceMap: false });
+      return res.code.toString();
+    } catch (e) {
+      console.warn("LightningCSS failed, falling back:", e.message);
+    }
+  }
   return css
     .replace(/\/\*[\s\S]*?\*\//g, "")
     .replace(/\s+/g, " ")

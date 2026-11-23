@@ -27,11 +27,11 @@ Phase 1 complete — ready for user review / push
 | 8 | Forms & interactive utilities (cursor, pointer, select, scroll) | DONE |
 | 9 | Variant engine (hover/focus/active/disabled/dark/responsive/container) | DONE |
 | 10 | Dark mode (system + manual toggle, light-dark()) | DONE |
-| 11 | Container queries (@container) | DONE (container-type + note) |
-| 12 | Arbitrary values support (p-[13px]) | DEFERRED (needs compiler/JIT; planned for build step) |
-| 13 | Build pipeline (LightningCSS) + drop-in bundle + npm publish config | DONE (basic inliner+minify; LightningCSS optional later) |
+| 11 | Container queries (@container) | DONE (container-type + optional variants bundle) |
+| 12 | Arbitrary values support (p-[13px]) | DONE (JIT compiler: scripts/jit.mjs) |
+| 13 | Build pipeline (LightningCSS) + drop-in bundle + npm publish config | DONE (LightningCSS minify + JIT integrated) |
 | 14 | Backward-compat fallback layer (older browsers) | DONE |
-| 15 | Editor DX (VS Code extension + TS types for class names) | DONE (TS types; extension later) |
+| 15 | Editor DX (VS Code extension + TS types for class names) | DONE (TS types + VS Code scaffold) |
 | 16 | Examples + docs + finalize README | DONE |
 
 ## Phase 2 (later, not now)

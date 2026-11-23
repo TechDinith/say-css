@@ -12,6 +12,7 @@
   ],
   "scripts": {
     "build": "node scripts/build.mjs",
+    "build:jit": "node scripts/jit.mjs",
     "gen:utilities": "node scripts/gen-utilities.mjs",
     "dev": "node scripts/build.mjs",
     "lint": "echo \"lint not yet implemented\""
@@ -31,6 +32,7 @@
     "url": "https://github.com/say-css/say-css"
   },
   "devDependencies": {
+    "lightningcss": "^1.33.0",
     "postcss": "^8.5.33"
   }
 }

@@ -1,0 +1,27 @@
+{
+  "name": "say-css-intellisense",
+  "displayName": "Say CSS Intellisense",
+  "description": "Autocomplete and hover for Say CSS utility classes.",
+  "version": "0.1.0",
+  "publisher": "say-css",
+  "engines": { "vscode": "^1.80.0" },
+  "categories": ["Other"],
+  "activationEvents": ["onLanguage:html", "onLanguage:javascript", "onLanguage:javascriptreact", "onLanguage:typescript", "onLanguage:typescriptreact", "onLanguage:vue", "onLanguage:svelte"],
+  "main": "./out/extension.js",
+  "scripts": {
+    "compile": "tsc -p .",
+    "watch": "tsc -watch -p ."
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.80.0",
+    "typescript": "^5.0.0"
+  },
+  "contributes": {
+    "configuration": {
+      "title": "Say CSS",
+      "properties": {
+        "sayCss.enable": { "type": "boolean", "default": true }
+      }
+    }
+  }
+}

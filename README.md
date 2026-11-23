@@ -72,6 +72,22 @@ npm run build        # inlines + minifies -> dist/say.min.css
 npm run gen:utilities # regenerate utility classes
 ```
 
+## Container-query variants (optional)
+
+Import the optional bundle to use `@sm:` `@md:` `@lg:` `@xl:` `@2xl:` prefixes based on the nearest container:
+```js
+import "@say-css/core/container-variants.css";
+```
+```html
+<div class="container">
+  <div class="@md:flex @lg:grid-cols-2">...</div>
+</div>
+```
+
+## Editor support
+
+A VS Code extension scaffold lives in `extensions/vscode/`. Compile with `npm run compile` (in that folder) after installing deps. TS types (`SayClass`) are in `types/`.
+
 ## Backward compat
 
 `src/compat.css` contains fallbacks for older browsers. Delete the import in `src/index.css` once you no longer need them.

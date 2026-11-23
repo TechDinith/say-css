@@ -13111,6 +13111,11 @@
 @keyframes say-bounce { 0%,100% { transform: translateY(-25%); animation-timing-function: cubic-bezier(0.8,0,1,1); } 50% { transform: translateY(0); animation-timing-function: cubic-bezier(0,0,0.2,1); } }
  }
 
+/* JIT arbitrary-value utilities (generated) */
+@layer say.utilities { /* Say CSS — generated JIT (arbitrary values). Regenerate: node scripts/jit.mjs */
+/* placeholder — populated by node scripts/jit.mjs in your project */
+ }
+
 /* Backward-compat fallbacks (removable later) live in compat.css */
 @layer say.compat { /* Backward-compat fallbacks — removable when older-browser support is dropped.
    These only apply when modern features are missing. */

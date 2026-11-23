@@ -9,7 +9,8 @@ import { dirname, join } from "node:path";
 const __dir = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dir, "..");
 
-const bps = [["sm", 640], ["md", 768], ["lg", 1024], ["xl", 1280], ["2xl", 1536]];
+const MODE = process.env.MODE || "normal";
+const OUT_FILE = process.env.OUT || "src/utilities.css";
 
 function esc(s) {
   return s.split("").map((c, i) => {
@@ -20,7 +21,13 @@ function esc(s) {
 
 const rules = [];
 function base(name, decls, opts = {}) {
-  const e = esc(name);
+  if (MODE === "container") {
+    const cbps = [["sm", 320], ["md", 480], ["lg", 640], ["xl", 800], ["2xl", 960]];
+    for (const [bp, px] of cbps) {
+      rules.push(`@container (min-width:${px}px){ .\\@${bp}\\:${esc(name)} { ${decls} } }`);
+    }
+    return;
+  }
   rules.push(`.${e} { ${decls} }`);
   if (opts.responsive !== false) {
     for (const [bp, px] of bps) {
@@ -561,7 +568,9 @@ const keyframes = `
 @keyframes say-bounce { 0%,100% { transform: translateY(-25%); animation-timing-function: cubic-bezier(0.8,0,1,1); } 50% { transform: translateY(0); animation-timing-function: cubic-bezier(0,0,0.2,1); } }
 `;
 
-const header = `/* Say CSS — generated utilities. Do not edit by hand. Regenerate: node scripts/gen-utilities.mjs */\n`;
-const css = header + rules.join("\n") + "\n" + keyframes;
-writeFileSync(join(ROOT, "src", "utilities.css"), css);
-console.log("Generated", rules.length, "rules -> src/utilities.css");
+const header = MODE === "container"
+  ? "/* Say CSS — generated container-query variants. Regenerate: MODE=container OUT=src/container-variants.css node scripts/gen-utilities.mjs */\n"
+  : "/* Say CSS — generated utilities. Do not edit by hand. Regenerate: node scripts/gen-utilities.mjs */\n";
+const css = header + rules.join("\n") + "\n" + (MODE === "container" ? "" : keyframes);
+writeFileSync(join(ROOT, OUT_FILE), css);
+console.log("Generated", rules.length, "rules ->", OUT_FILE);

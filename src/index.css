@@ -11,5 +11,8 @@
 /* Utility classes */
 @import "./utilities.css" layer(say.utilities);
 
+/* JIT arbitrary-value utilities (generated) */
+@import "./jit.css" layer(say.utilities);
+
 /* Backward-compat fallbacks (removable later) live in compat.css */
 @import "./compat.css" layer(say.compat);
