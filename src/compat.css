@@ -1,6 +1,6 @@
 /* Backward-compat fallbacks — removable when older-browser support is dropped.
    These only apply when modern features are missing. */
-@layer say.compat {
+
   /* OKLCH fallback: provide sRGB colors for browsers without oklch() */
   @supports not (color: oklch(0 0 0)) {
     :root {
@@ -24,4 +24,3 @@
       /* degrade gracefully: behave as normal block */
     }
   }
-}

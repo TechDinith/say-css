@@ -1,5 +1,4 @@
 /* Modern CSS reset — https://piccalil.li/blog/a-modern-css-reset/ (adapted) */
-@layer say.reset {
   *,
   *::before,
   *::after {
@@ -52,4 +51,3 @@
   #__next {
     isolation: isolate;
   }
-}
