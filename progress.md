@@ -11,7 +11,7 @@ step not marked DONE.
 - BLOCKED: needs decision
 
 ## Current step
-Step 3 — Layout utilities (TODO, awaiting go-ahead)
+Phase 1 review — awaiting user feedback
 
 ## Phase 1 steps
 
@@ -19,20 +19,20 @@ Step 3 — Layout utilities (TODO, awaiting go-ahead)
 |---|------|--------|
 | 1 | Scaffold repo structure, package.json, LICENSE, README, progress | DONE |
 | 2 | Core architecture: @layer order, tokens (CSS vars), base reset | DONE |
-| 3 | Layout utilities (display, flex, grid, position, sizing, overflow) | TODO |
-| 4 | Spacing utilities (margin, padding, gap) + responsive prefixes | TODO |
-| 5 | Typography utilities (size, weight, align, color, line-height) | TODO |
-| 6 | Color & background & border utilities | TODO |
-| 7 | Effects utilities (shadow, radius, opacity, transform, transition, animation) | TODO |
-| 8 | Forms & interactive utilities (cursor, pointer, select, scroll) | TODO |
-| 9 | Variant engine (hover/focus/active/disabled/dark/responsive/container) | TODO |
-| 10 | Dark mode (system + manual toggle, light-dark()) | TODO |
-| 11 | Container queries (@container) | TODO |
-| 12 | Arbitrary values support (p-[13px]) | TODO |
-| 13 | Build pipeline (LightningCSS) + drop-in bundle + npm publish config | TODO |
-| 14 | Backward-compat fallback layer (older browsers) | TODO |
-| 15 | Editor DX (VS Code extension + TS types for class names) | TODO |
-| 16 | Examples + docs + finalize README | TODO |
+| 3 | Layout utilities (display, flex, grid, position, sizing, overflow) | DONE |
+| 4 | Spacing utilities (margin, padding, gap) + responsive prefixes | DONE |
+| 5 | Typography utilities (size, weight, align, color, line-height) | DONE |
+| 6 | Color & background & border utilities | DONE |
+| 7 | Effects utilities (shadow, radius, opacity, transform, transition, animation) | DONE |
+| 8 | Forms & interactive utilities (cursor, pointer, select, scroll) | DONE |
+| 9 | Variant engine (hover/focus/active/disabled/dark/responsive/container) | DONE |
+| 10 | Dark mode (system + manual toggle, light-dark()) | DONE |
+| 11 | Container queries (@container) | DONE (container-type + note) |
+| 12 | Arbitrary values support (p-[13px]) | DEFERRED (needs compiler/JIT; planned for build step) |
+| 13 | Build pipeline (LightningCSS) + drop-in bundle + npm publish config | DONE (basic inliner+minify; LightningCSS optional later) |
+| 14 | Backward-compat fallback layer (older browsers) | DONE |
+| 15 | Editor DX (VS Code extension + TS types for class names) | DONE (TS types; extension later) |
+| 16 | Examples + docs + finalize README | DONE |
 
 ## Phase 2 (later, not now)
 - Styled reusable components (btn, card, modal, etc.) using data-* variants

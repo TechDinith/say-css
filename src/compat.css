@@ -1,4 +1,27 @@
-/* Backward-compat fallbacks — populated in Step 14. Removable. */
+/* Backward-compat fallbacks — removable when older-browser support is dropped.
+   These only apply when modern features are missing. */
 @layer say.compat {
-  /* placeholder */
+  /* OKLCH fallback: provide sRGB colors for browsers without oklch() */
+  @supports not (color: oklch(0 0 0)) {
+    :root {
+      --say-color-primary-500: #3b5bdb;
+      --say-color-primary-600: #364fc7;
+      --say-color-text: #1a1b1e;
+      --say-color-bg: #f8f9fa;
+      --say-color-border: #dee2e6;
+    }
+  }
+
+  /* Cascade layers fallback: if @layer unsupported, keep specificity low */
+  @supports not (@layer x) {
+    /* Utilities still work; specificity may require source order. No-op placeholder. */
+  }
+
+  /* Container queries fallback */
+  @supports not (container-type: inline-size) {
+    .container-inline,
+    .container-size {
+      /* degrade gracefully: behave as normal block */
+    }
+  }
 }

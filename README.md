@@ -1,23 +1,19 @@
 # Say CSS
 
-**Say CSS** is a utility-first CSS library for modern web apps (React, Next, Vite, Vue, Svelte, plain HTML).
+Utility-first CSS library for modern web apps (React, Next, Vite, Vue, Svelte, plain HTML).
 
-- **Zero config:** drop in one file or install via npm and it just works.
-- **Modern CSS:** cascade layers, nesting, `:has()`, container queries, OKLCH colors.
-- **Highly customizable:** override CSS variables anywhere (`--say-color-primary`).
-- **Dark mode built in:** system + manual toggle.
+- **Zero config:** drop in one file or `import "@say-css/core"` — works immediately.
+- **Modern CSS:** cascade layers, OKLCH colors, nesting, `:has()`, container queries.
+- **Customizable:** override `--say-*` CSS variables anywhere (even inline).
+- **Dark mode built in:** follows system + manual toggle.
 - **Backward compatible:** small fallback layer you can delete when ready.
-- **Editor DX:** VS Code autocomplete + TS types.
+- **Editor DX:** ships TS types (`SayClass`) for autocomplete.
 
-## Why
+## Install
 
-Existing CSS libraries (Tailwind, Bootstrap) often require build steps, long class chains, specificity fights, and heavy docs. Say CSS aims to be simpler, faster, and more advanced by leaning on modern CSS features that now have universal browser support.
-
-## Install (Phase 1 — in progress)
-
-Drop-in:
+Drop-in (no build step):
 ```html
-<link rel="stylesheet" href="say.css" />
+<link rel="stylesheet" href="say.min.css" />
 ```
 
 npm:
@@ -25,9 +21,61 @@ npm:
 npm install @say-css/core
 ```
 ```js
-import "@say-css/core";
+import "@say-css/core"; // loads dist/say.css
 ```
 
-## Docs
+## Usage
 
-Full documentation is being written during Phase 1. See `progress.md` for current status.
+```html
+<button class="px-4 py-2 bg-primary-500 text-white rounded-lg shadow hover:bg-primary-600 transition-colors">
+  Click me
+</button>
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+  <div class="p-4 bg-white rounded-xl shadow-sm border border-neutral-200">Card</div>
+</div>
+```
+
+## Customize
+
+Override tokens in your CSS:
+```css
+:root {
+  --say-color-primary-500: oklch(0.6 0.2 30); /* make primary orange */
+  --say-space-4: 1.25rem;
+}
+```
+Or locally:
+```html
+<section style="--say-color-primary-500: coral;">...</section>
+```
+
+## Dark mode
+
+Automatic via `prefers-color-scheme`. Manual toggle:
+```html
+<html class="dark">   <!-- or data-theme="dark" -->
+```
+
+## Responsive & states
+
+Prefixes: `sm:` `md:` `lg:` `xl:` `2xl:` (min-width). States: `hover:` `focus:` `active:` `disabled:` `dark:`.
+
+```html
+<div class="text-sm md:text-lg hover:text-primary-600 dark:bg-neutral-900">...</div>
+```
+
+## Build (optional, smaller output)
+
+```bash
+npm run build        # inlines + minifies -> dist/say.min.css
+npm run gen:utilities # regenerate utility classes
+```
+
+## Backward compat
+
+`src/compat.css` contains fallbacks for older browsers. Delete the import in `src/index.css` once you no longer need them.
+
+## License
+
+MIT

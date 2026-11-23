@@ -2,16 +2,14 @@
  * Say CSS — Core architecture
  * Layer order: later layers win without !important
  */
-@layer say.reset, say.tokens, say.base, say.utilities, say.components, say.variants;
+@layer say.reset, say.tokens, say.base, say.utilities, say.components, say.variants, say.compat;
 
 @import "./reset.css" layer(say.reset);
 @import "./tokens.css" layer(say.tokens);
 @import "./base.css" layer(say.base);
 
-/* Utility classes are appended here in later steps. */
-@layer say.utilities {
-  /* placeholder — populated in Steps 3-8 */
-}
+/* Utility classes */
+@import "./utilities.css" layer(say.utilities);
 
 /* Backward-compat fallbacks (removable later) live in compat.css */
 @import "./compat.css" layer(say.compat);
