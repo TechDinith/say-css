@@ -53,13 +53,15 @@ export default function sayCss(options = {}) {
     load(id) {
       if (id === RESOLVED_ID) return css;
     },
+    transform(code, id) {
+      if (/[\\/]main\.(jsx|tsx|js|ts)$/.test(id)) {
+        // Inject base CSS import only; JIT is inlined via transformIndexHtml
+        return `import "@say-css/core";\n` + code;
+      }
+      return null;
+    },
     transformIndexHtml(html) {
-      // Auto-inject base CSS + JIT (no manual import needed)
-      const inject = `<script type="module">
-import "@say-css/core";
-import "${VIRTUAL_ID}";
-</script>`;
-      return html.replace("</head>", inject + "</head>");
+      return html.replace("</head>", `<style id="say-css-jit">${css}</style></head>`);
     },
   };
 }
