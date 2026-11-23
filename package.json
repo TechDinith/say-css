@@ -1,0 +1,21 @@
+{
+  "name": "@say-css/core",
+  "version": "0.1.0",
+  "description": "Say CSS — utility-first CSS library. Simple, fast, modern, zero-config.",
+  "type": "module",
+  "main": "dist/say.css",
+  "style": "dist/say.css",
+  "files": ["dist", "src"],
+  "scripts": {
+    "build": "echo \"build not yet implemented\"",
+    "dev": "echo \"dev not yet implemented\"",
+    "lint": "echo \"lint not yet implemented\""
+  },
+  "keywords": ["css", "utility", "utility-first", "tailwind-alternative", "say-css", "modern-css"],
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/say-css/say-css"
+  }
+}
