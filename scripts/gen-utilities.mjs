@@ -20,6 +20,7 @@ function esc(s) {
 }
 
 const rules = [];
+const variantRules = [];
 const bps = [["sm", 640], ["md", 768], ["lg", 1024], ["xl", 1280], ["2xl", 1536]];
 
 function base(name, decls, opts = {}) {
@@ -34,14 +35,14 @@ function base(name, decls, opts = {}) {
   rules.push(`.${e} { ${decls} }`);
   if (opts.responsive !== false) {
     for (const [bp, px] of bps) {
-      rules.push(`@media (min-width:${px}px){ .\\${bp}\\:${e} { ${decls} } }`);
+      variantRules.push(`@media (min-width:${px}px){ .\\${bp}\\:${e} { ${decls} } }`);
     }
   }
-  if (opts.hover) rules.push(`.${esc("hover:" + name)}:hover { ${decls} }`);
-  if (opts.focus) rules.push(`.${esc("focus:" + name)}:focus { ${decls} }`);
-  if (opts.active) rules.push(`.${esc("active:" + name)}:active { ${decls} }`);
-  if (opts.disabled) rules.push(`.${esc("disabled:" + name)}:disabled { ${decls} }`);
-  if (opts.dark) rules.push(`.dark .${esc("dark:" + name)}, [data-theme="dark"] .${esc("dark:" + name)} { ${decls} }`);
+  if (opts.hover) variantRules.push(`.${esc("hover:" + name)}:hover { ${decls} }`);
+  if (opts.focus) variantRules.push(`.${esc("focus:" + name)}:focus { ${decls} }`);
+  if (opts.active) variantRules.push(`.${esc("active:" + name)}:active { ${decls} }`);
+  if (opts.disabled) variantRules.push(`.${esc("disabled:" + name)}:disabled { ${decls} }`);
+  if (opts.dark) variantRules.push(`.dark .${esc("dark:" + name)}, [data-theme="dark"] .${esc("dark:" + name)} { ${decls} }`);
 }
 
 const spaceKeys = ["0","px","0.5","1","1.5","2","2.5","3","3.5","4","5","6","7","8","9","10","11","12","14","16","20","24","28","32","36","40","44","48","52","56","60","64","72","80","96"];
@@ -59,7 +60,7 @@ function spaceToken(k) { return `var(--say-space-${k.replace(".", "-")})`; }
 import { hues, shades } from "./colors.mjs";
 
 // ---------- Display ----------
-for (const [n,d] of [["block","block"],["inline-block","inline-block"],["inline","inline"],["flex","flex"],["inline-flex","inline-flex"],["grid","grid"],["inline-grid","inline-grid"],["hidden","none"],["contents","contents"],["table","table"],["table-row","table-row"],["table-cell","table-cell"],["flow-root","flow-root"]]) base(n, `display:${d};`);
+for (const [n,d] of [["block","block"],["inline-block","inline-block"],["inline","inline"],["flex","flex"],["inline-flex","inline-flex"],["grid","grid"],["inline-grid","inline-grid"],["hidden","none"],["contents","contents"],["table","table"],["table-row","table-row"],["table-cell","table-cell"],["flow-root","flow-root"]]) base(n, `display:${d};`, { dark: true });
 
 // ---------- Position ----------
 for (const p of ["static","fixed","absolute","relative","sticky"]) base(p, `position:${p};`);
@@ -592,6 +593,7 @@ const keyframes = `
 const header = MODE === "container"
   ? "/* Say CSS — generated container-query variants. Regenerate: MODE=container OUT=src/container-variants.css node scripts/gen-utilities.mjs */\n"
   : "/* Say CSS — generated utilities. Do not edit by hand. Regenerate: node scripts/gen-utilities.mjs */\n";
+if (MODE !== "container") rules.push(...variantRules);
 const css = header + rules.join("\n") + "\n" + (MODE === "container" ? "" : keyframes);
 writeFileSync(join(ROOT, OUT_FILE), css);
 console.log("Generated", rules.length, "rules ->", OUT_FILE);

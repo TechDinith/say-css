@@ -15,5 +15,8 @@
 /* JIT arbitrary-value utilities (generated) */
 @import "./jit.css" layer(say.utilities);
 
+/* Styled components & design primitives */
+@import "./components.css" layer(say.components);
+
 /* Backward-compat fallbacks (removable later) live in compat.css */
 @import "./compat.css" layer(say.compat);

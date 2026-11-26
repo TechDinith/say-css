@@ -50,7 +50,7 @@
     --say-space-96: 24rem;
 
     /* ---------- Typography ---------- */
-    --say-font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --say-font-sans: "Inter", "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     --say-font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
     --say-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 
@@ -119,6 +119,25 @@
     --say-z-40: 40;
     --say-z-50: 50;
     --say-z-auto: auto;
+
+    /* ---------- Semantic aliases (shadcn-style foreground pairs) ---------- */
+    --say-color-surface: var(--say-color-bg);
+    --say-color-surface-foreground: var(--say-color-text);
+    --say-color-card: var(--say-color-bg);
+    --say-color-card-foreground: var(--say-color-text);
+    --say-color-popover: var(--say-color-bg);
+    --say-color-popover-foreground: var(--say-color-text);
+    --say-color-primary-foreground: #ffffff;
+    --say-color-secondary: var(--say-color-bg-muted);
+    --say-color-secondary-foreground: var(--say-color-text);
+    --say-color-muted: var(--say-color-bg-subtle);
+    --say-color-muted-foreground: var(--say-color-text-muted);
+    --say-color-accent: var(--say-color-bg-muted);
+    --say-color-accent-foreground: var(--say-color-text);
+    --say-color-destructive: var(--say-color-red-500);
+    --say-color-destructive-foreground: #ffffff;
+    --say-color-input: var(--say-color-border);
+    --say-color-ring: var(--say-color-primary-500);
 
     /* ---------- Transitions ---------- */
     --say-duration-75: 75ms;

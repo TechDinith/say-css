@@ -6,11 +6,30 @@
     background-color: var(--say-color-bg);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "ss01" 1;
+    scroll-behavior: smooth;
   }
 
   body {
     min-height: 100vh;
+    font-synthesis: none;
   }
+
+  /* nicer scrollbars */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--say-color-neutral-300) transparent;
+  }
+  *::-webkit-scrollbar { width: 10px; height: 10px; }
+  *::-webkit-scrollbar-track { background: transparent; }
+  *::-webkit-scrollbar-thumb {
+    background: var(--say-color-neutral-300);
+    border-radius: 9999px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+  }
+  *::-webkit-scrollbar-thumb:hover { background: var(--say-color-neutral-400); background-clip: padding-box; }
 
   ::selection {
     background-color: var(--say-color-primary-200);
@@ -43,3 +62,23 @@
     border: 0;
     border-top: 1px solid var(--say-color-border);
   }
+
+  /* Respect reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  /* Better default headings */
+  h1, h2, h3, h4, h5, h6 {
+    line-height: var(--say-leading-tight);
+    letter-spacing: var(--say-tracking-tight);
+    font-weight: var(--say-font-weight-bold);
+    text-wrap: balance;
+  }
+  p { text-wrap: pretty; }

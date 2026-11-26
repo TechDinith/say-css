@@ -15,15 +15,12 @@ for (const hue of hues) {
     css += `    --say-color-${hue}-${sh}: ${oklch(hue, sh)};\n`;
   }
 }
-// semantic aliases
-css += `    --say-color-primary-50: var(--say-color-blue-50);\n`;
-// (primary maps to blue; keep --say-color-primary-* as aliases to blue)
+// semantic aliases (primary -> blue, neutral -> zinc)
 for (const sh of shades) {
   css += `    --say-color-primary-${sh}: var(--say-color-blue-${sh});\n`;
 }
-css += `    --say-color-neutral-50: var(--say-color-slate-50);\n`;
 for (const sh of shades) {
-  css += `    --say-color-neutral-${sh}: var(--say-color-slate-${sh});\n`;
+  css += `    --say-color-neutral-${sh}: var(--say-color-zinc-${sh});\n`;
 }
 // semantic single colors
 css += `    --say-color-success: var(--say-color-green-500);\n`;

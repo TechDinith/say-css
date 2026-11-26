@@ -4,14 +4,17 @@ import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
-const css = readFileSync(join(ROOT, "src", "utilities.css"), "utf8");
-
+const files = ["utilities.css", "components.css"];
 const names = new Set();
 const re = /\.((?:\\.|[^.\s{])+)/g;
-let m;
-while ((m = re.exec(css)) !== null) {
-  let name = m[1].replace(/\\(.)/g, "$1");
-  if (name && !name.startsWith("@")) names.add(name);
+for (const f of files) {
+  let css = "";
+  try { css = readFileSync(join(ROOT, "src", f), "utf8"); } catch {}
+  let m;
+  while ((m = re.exec(css)) !== null) {
+    let name = m[1].replace(/\\(.)/g, "$1");
+    if (name && !name.startsWith("@") && !name.startsWith("\\")) names.add(name);
+  }
 }
 
 const sorted = [...names].sort();

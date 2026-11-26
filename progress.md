@@ -11,7 +11,7 @@ step not marked DONE.
 - BLOCKED: needs decision
 
 ## Current step
-Phase 1 complete — ready for user review / push
+Phase 2 in progress — styled components & design primitives added
 
 ## Phase 1 steps
 

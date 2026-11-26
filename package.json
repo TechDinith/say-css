@@ -9,6 +9,7 @@
     ".": "./dist/say.css",
     "./container-variants.css": "./src/container-variants.css",
     "./jit.css": "./src/jit.css",
+    "./components.css": "./src/components.css",
     "./vite": "./plugins/vite.mjs"
   },
   "types": "./types/index.d.ts",

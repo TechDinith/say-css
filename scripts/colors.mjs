@@ -43,4 +43,4 @@ export function oklch(hueName, shade) {
 
 // Semantic aliases
 export const primaryHue = "blue";
-export const neutralHue = "slate";
+export const neutralHue = "zinc";

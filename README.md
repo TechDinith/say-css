@@ -132,6 +132,62 @@ Arbitrary values are now generated automatically during dev and build — no man
 
 `src/compat.css` contains fallbacks for older browsers. Delete the import in `src/index.css` once you no longer need them.
 
+## Modern platform features
+
+Say CSS is built on the modern web platform — no JavaScript required for most interactions:
+- Container queries (`@container`) for component-level responsiveness
+- `:has()`-ready architecture and cascade layers
+- View Transitions API for smooth page navigation
+- Scroll-driven animations (`animation-timeline`)
+- Popover API with `@starting-style` enter/exit
+- Anchor positioning for tooltips/popovers
+- Subgrid alignment across cards
+- Logical properties for RTL
+- Forced-colors / high-contrast / reduced-motion support
+- Print styles
+
+## Components (new)
+
+Say CSS now ships polished, themeable components out of the box — no extra dependencies.
+
+```html
+<!-- Button variants -->
+<button class="btn btn-primary">Get started</button>
+<button class="btn btn-outline">Learn more</button>
+<button class="btn btn-ghost btn-sm">Cancel</button>
+
+<!-- Card -->
+<div class="card card-interactive">
+  <div class="card-header">Card title</div>
+  <div class="card-body">Body content goes here.</div>
+  <div class="card-footer">
+    <button class="btn btn-ghost btn-sm">Cancel</button>
+    <button class="btn btn-primary btn-sm">Save</button>
+  </div>
+</div>
+
+<!-- Form -->
+<label class="label">Email</label>
+<input class="input" type="email" placeholder="you@example.com" />
+<p class="hint">We'll never share your email.</p>
+
+<!-- Badge / alert -->
+<span class="badge badge-success">Active</span>
+<div class="alert alert-info"><strong>Heads up!</strong> Something changed.</div>
+
+<!-- Avatar / spinner -->
+<span class="avatar avatar-md">KC</span>
+<span class="spinner"></span>
+
+<!-- Typography -->
+<article class="prose">
+  <h1>Heading</h1>
+  <p>Beautiful default typography.</p>
+</article>
+```
+
+Available components: `.container`, `.card`, `.btn`, `.input`/`.textarea`/`.select`, `.badge`, `.alert`, `.avatar`, `.spinner`, `.skeleton`, `.modal`, `.tabs`/`.tab`, `.navbar`, `.table`, `.toast`, `.tooltip`, `.divider`, `.prose`, `.glass`, `.text-gradient`, plus animation helpers (`.animate-*`).
+
 ## License
 
 MIT

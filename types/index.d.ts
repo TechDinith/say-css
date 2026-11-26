@@ -438,15 +438,22 @@ export type SayClass =
   "-translate-y-9" | 
   "-translate-y-96" | 
   "-translate-y-px" | 
+  "01em;" | 
+  "04)," | 
+  "04);" | 
   "05);" | 
   "05;" | 
   "05;--say-tw-scale-y:1" | 
   "05;transform:scale(1" | 
+  "06);" | 
+  "08)," | 
   "1);" | 
+  "125rem" | 
   "125rem);" | 
   "125rem;" | 
   "125rem;margin-bottom:-0" | 
   "125rem;margin-right:-0" | 
+  "15em" | 
   "1;" | 
   "1;--say-tw-scale-y:1" | 
   "1;transform:scale(1" | 
@@ -456,6 +463,7 @@ export type SayClass =
   "25;" | 
   "25;--say-tw-scale-y:1" | 
   "25;transform:scale(1" | 
+  "25rem" | 
   "25rem);" | 
   "25rem;" | 
   "25rem;margin-bottom:-0" | 
@@ -464,7 +472,9 @@ export type SayClass =
   "25rem;margin-right:-0" | 
   "25rem;margin-right:-1" | 
   "25rem;margin-right:-2" | 
+  "25s" | 
   "2;" | 
+  "2s" | 
   "2xl:-bottom-0.5" | 
   "2xl:-bottom-1" | 
   "2xl:-bottom-1.5" | 
@@ -3944,7 +3954,9 @@ export type SayClass =
   "2xl:z-50" | 
   "2xl:z-auto" | 
   "333333%;" | 
+  "35s" | 
   "375;" | 
+  "375rem" | 
   "375rem);" | 
   "375rem;" | 
   "375rem;margin-bottom:-0" | 
@@ -3952,7 +3964,10 @@ export type SayClass =
   "3;" | 
   "4,0,0" | 
   "4;" | 
+  "4em;" | 
+  "4s" | 
   "5);" | 
+  "5625rem" | 
   "5;" | 
   "5;--say-tw-scale-y:0" | 
   "5;--say-tw-scale-y:1" | 
@@ -3968,8 +3983,10 @@ export type SayClass =
   "5rem;margin-right:-1" | 
   "5rem;margin-right:-2" | 
   "5rem;margin-right:-3" | 
+  "5s" | 
   "6,1)" | 
   "625;" | 
+  "625rem" | 
   "625rem);" | 
   "625rem;" | 
   "625rem;margin-bottom:-0" | 
@@ -3980,6 +3997,7 @@ export type SayClass =
   "75;" | 
   "75;--say-tw-scale-y:0" | 
   "75;transform:scale(0" | 
+  "75rem" | 
   "75rem);" | 
   "75rem;" | 
   "75rem;margin-bottom:-0" | 
@@ -3990,36 +4008,75 @@ export type SayClass =
   "75rem;margin-right:-2" | 
   "7;" | 
   "8,0,1,1);" | 
+  "875rem" | 
   "875rem);" | 
   "875rem;" | 
   "875rem;margin-bottom:-0" | 
   "875rem;margin-right:-0" | 
   "8;" | 
+  "8s" | 
   "9);" | 
   "95);" | 
   "95;" | 
   "95;--say-tw-scale-y:0" | 
   "95;transform:scale(0" | 
+  "96);" | 
+  "98);" | 
   "9;" | 
   "9;--say-tw-scale-y:0" | 
   "9;transform:scale(0" | 
+  "9em;" | 
   "absolute" | 
+  "active" | 
+  "alert" | 
+  "alert-danger" | 
+  "alert-danger," | 
+  "alert-info" | 
+  "alert-info," | 
+  "alert-success" | 
+  "alert-success," | 
+  "alert-title" | 
+  "alert-warning" | 
+  "alert-warning," | 
   "animate-bounce" | 
+  "animate-fade-in" | 
   "animate-none" | 
   "animate-ping" | 
   "animate-pulse" | 
+  "animate-scale-in" | 
+  "animate-slide-up" | 
   "animate-spin" | 
   "appearance-auto" | 
   "appearance-none" | 
   "aspect-auto" | 
   "aspect-square" | 
   "aspect-video" | 
+  "avatar" | 
+  "avatar-lg" | 
+  "avatar-md" | 
+  "avatar-sm" | 
+  "avatar-xl" | 
+  "avatar-xs" | 
   "backdrop-blur" | 
   "backdrop-blur-lg" | 
   "backdrop-blur-md" | 
   "backdrop-blur-none" | 
   "backdrop-blur-sm" | 
   "backdrop-blur-xl" | 
+  "badge" | 
+  "badge-danger" | 
+  "badge-danger," | 
+  "badge-info" | 
+  "badge-info," | 
+  "badge-outline" | 
+  "badge-primary" | 
+  "badge-primary," | 
+  "badge-secondary" | 
+  "badge-secondary," | 
+  "badge-success" | 
+  "badge-success," | 
+  "badge-warning" | 
+  "badge-warning," | 
   "basis-0" | 
   "basis-0.5" | 
   "basis-1" | 
@@ -4057,6 +4114,9 @@ export type SayClass =
   "basis-auto" | 
   "basis-full" | 
   "basis-px" | 
+  "bento" | 
+  "bento-2" | 
+  "bento-3" | 
   "bg-amber-100" | 
   "bg-amber-200" | 
   "bg-amber-300" | 
@@ -4632,7 +4692,42 @@ export type SayClass =
   "break-keep" | 
   "break-normal" | 
   "break-words" | 
+  "btn" | 
+  "btn-block" | 
+  "btn-danger" | 
+  "btn-danger:hover" | 
+  "btn-ghost" | 
+  "btn-ghost:hover" | 
+  "btn-icon" | 
+  "btn-lg" | 
+  "btn-outline" | 
+  "btn-outline:hover" | 
+  "btn-primary" | 
+  "btn-primary:hover" | 
+  "btn-secondary" | 
+  "btn-secondary:hover" | 
+  "btn-sm" | 
+  "btn-success" | 
+  "btn-success:hover" | 
+  "btn-xl" | 
+  "btn:active" | 
+  "btn:disabled," | 
+  "btn:focus-visible" | 
+  "btn:hover" | 
+  "btn[aria-disabled=\"true\"]" | 
   "capitalize" | 
+  "card" | 
+  "card-body" | 
+  "card-elevated" | 
+  "card-footer" | 
+  "card-glass" | 
+  "card-glass," | 
+  "card-header" | 
+  "card-interactive:hover" | 
+  "card:hover" | 
+  "center" | 
+  "checkbox," | 
+  "cluster" | 
   "col-auto" | 
   "col-end-1" | 
   "col-end-2" | 
@@ -4664,10 +4759,13 @@ export type SayClass =
   "col-start-7" | 
   "col-start-auto" | 
   "collapse" | 
+  "components" | 
   "container" | 
   "container-inline" | 
+  "container-narrow" | 
   "container-normal" | 
   "container-size" | 
+  "container-wide" | 
   "content-around" | 
   "content-between" | 
   "content-center" | 
@@ -6214,6 +6312,8 @@ export type SayClass =
   "divide-x-0" | 
   "divide-y" | 
   "divide-y-0" | 
+  "divider" | 
+  "divider-vertical" | 
   "duration-100" | 
   "duration-1000" | 
   "duration-150" | 
@@ -6226,6 +6326,7 @@ export type SayClass =
   "ease-in-out" | 
   "ease-linear" | 
   "ease-out" | 
+  "error-text" | 
   "fixed" | 
   "flex" | 
   "flex-1" | 
@@ -7357,6 +7458,8 @@ export type SayClass =
   "gap-y-9" | 
   "gap-y-96" | 
   "gap-y-px" | 
+  "glass" | 
+  "glass," | 
   "grid" | 
   "grid-cols-1" | 
   "grid-cols-10" | 
@@ -7427,6 +7530,7 @@ export type SayClass =
   "h-px" | 
   "h-screen" | 
   "hidden" | 
+  "hint" | 
   "hover:bg-amber-100:hover" | 
   "hover:bg-amber-200:hover" | 
   "hover:bg-amber-300:hover" | 
@@ -8184,6 +8288,13 @@ export type SayClass =
   "inline-block" | 
   "inline-flex" | 
   "inline-grid" | 
+  "input," | 
+  "input-error," | 
+  "input::placeholder," | 
+  "input:disabled," | 
+  "input:focus," | 
+  "input:hover," | 
+  "input[aria-invalid=\"true\"]" | 
   "inset-0" | 
   "inset-x-0" | 
   "inset-y-0" | 
@@ -8209,6 +8320,7 @@ export type SayClass =
   "justify-self-start" | 
   "justify-self-stretch" | 
   "justify-start" | 
+  "label" | 
   "leading-loose" | 
   "leading-none" | 
   "leading-normal" | 
@@ -15358,6 +15470,11 @@ export type SayClass =
   "ml-96" | 
   "ml-auto" | 
   "ml-px" | 
+  "modal" | 
+  "modal-backdrop" | 
+  "modal-footer" | 
+  "modal-header" | 
+  "modal-title" | 
   "mr-0" | 
   "mr-0.5" | 
   "mr-1" | 
@@ -15502,6 +15619,11 @@ export type SayClass =
   "my-96" | 
   "my-auto" | 
   "my-px" | 
+  "navbar" | 
+  "navbar-brand" | 
+  "navbar-link" | 
+  "navbar-link:hover" | 
+  "navbar-links" | 
   "no-underline" | 
   "normal-case" | 
   "not-italic" | 
@@ -15534,6 +15656,7 @@ export type SayClass =
   "opacity-80" | 
   "opacity-90" | 
   "opacity-95" | 
+  "org/2000/svg'" | 
   "origin-bottom" | 
   "origin-bottom-left" | 
   "origin-bottom-right" | 
@@ -15706,6 +15829,7 @@ export type SayClass =
   "pr-9" | 
   "pr-96" | 
   "pr-px" | 
+  "prose" | 
   "pt-0" | 
   "pt-0.5" | 
   "pt-1" | 
@@ -15811,6 +15935,7 @@ export type SayClass =
   "py-9" | 
   "py-96" | 
   "py-px" | 
+  "radio" | 
   "relative" | 
   "resize" | 
   "resize-none" | 
@@ -16222,10 +16347,16 @@ export type SayClass =
   "scale-y-0" | 
   "scroll-auto" | 
   "scroll-smooth" | 
+  "section" | 
+  "select" | 
+  "select," | 
   "select-all" | 
   "select-auto" | 
   "select-none" | 
   "select-text" | 
+  "select:disabled" | 
+  "select:focus" | 
+  "select:hover" | 
   "self-auto" | 
   "self-baseline" | 
   "self-center" | 
@@ -16242,6 +16373,7 @@ export type SayClass =
   "shadow-xl" | 
   "shrink" | 
   "shrink-0" | 
+  "skeleton" | 
   "skew-x-0" | 
   "skew-x-1" | 
   "skew-x-12" | 
@@ -19741,13 +19873,26 @@ export type SayClass =
   "snap-start" | 
   "snap-x" | 
   "snap-y" | 
+  "spinner" | 
+  "spinner-lg" | 
+  "spinner-sm" | 
+  "stack" | 
   "static" | 
   "sticky" | 
+  "switch" | 
+  "switch::after" | 
+  "switch[aria-checked=\"true\"]" | 
+  "switch[aria-checked=\"true\"]::after" | 
+  "tab" | 
+  "tab:hover" | 
   "table" | 
   "table-auto" | 
   "table-cell" | 
+  "table-compact" | 
   "table-fixed" | 
   "table-row" | 
+  "table-striped" | 
+  "tabs" | 
   "text-2xl" | 
   "text-3xl" | 
   "text-4xl" | 
@@ -19818,6 +19963,7 @@ export type SayClass =
   "text-fuchsia-800" | 
   "text-fuchsia-900" | 
   "text-fuchsia-950" | 
+  "text-gradient" | 
   "text-gray-100" | 
   "text-gray-200" | 
   "text-gray-300" | 
@@ -20018,6 +20164,12 @@ export type SayClass =
   "text-zinc-800" | 
   "text-zinc-900" | 
   "text-zinc-950" | 
+  "textarea" | 
+  "textarea," | 
+  "textarea::placeholder" | 
+  "textarea:disabled," | 
+  "textarea:focus," | 
+  "textarea:hover," | 
   "to-amber-100" | 
   "to-amber-200" | 
   "to-amber-300" | 
@@ -20265,6 +20417,11 @@ export type SayClass =
   "to-zinc-800" | 
   "to-zinc-900" | 
   "to-zinc-950" | 
+  "toast" | 
+  "tooltip" | 
+  "tooltip::after" | 
+  "tooltip::after," | 
+  "tooltip:hover::after" | 
   "top-0" | 
   "top-0.5" | 
   "top-1" | 
@@ -20460,6 +20617,7 @@ export type SayClass =
   "w-min" | 
   "w-px" | 
   "w-screen" | 
+  "w3" | 
   "whitespace-normal" | 
   "whitespace-nowrap" | 
   "whitespace-pre" | 
